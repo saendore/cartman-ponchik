@@ -1,46 +1,232 @@
-.telo0 {
-    position: absolute;
-    animation-name: example;
-    animation-duration: 7s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes example {
-    0% {left: 32.5%; top: 1.5%; transform: rotate(0);}
-    10% {left: 55.5%; top: 23.5%; transform: rotate(300deg);}
-    20% {left: 58%; top: 34.5%; transform: rotate(600deg);}
-    35% {left: 71.5%; top: 48%; transform: rotate(720deg);}
-    60% {left: 76%; top: 78%; transform: rotate(1440deg);}
-    80% {left: 85%; top: 78%; transform: rotate(1600deg);}
-    100% {left: 85%; top: 78%; transform: rotate(1600deg);}
-}
-
-.cartman {
-    position: absolute;
-    animation-name: example1;
-    animation-duration: 7s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes example1 {
-    0% {left: 27%; top: 70%; transform: rotate(0deg);}
-    10% {left: 15; top: 73%; transform: rotate(5deg);}
-    20% {left: 5%; top: 73%; transform: rotate(-5deg);}
-    60% {left: 45%; top: 75%; transform: rotate(10deg);}
-    80% {left: 76%; top: 74%; transform: rotate(-5deg);}
-    100% {left: 76%; top: 74%; transform: rotate(-5deg);}
-}
-
-body {
-    background-image: url(CartmanResidence.png);
-    min-height: 100%;
-    min-width: 640px;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     width: 100%;
-    height: auto;
-    background-size: 100%;
+    overflow: hidden;
+    background-color: #111;
+}
+
+.scene {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+
+.sky {
+    position: absolute;
     top: 0;
     left: 0;
-    overflow: hidden;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, #1a1a3d, #111);
+}
+
+
+.city {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 5%;
+}
+
+.building {
+    position: relative;
+    width: 15%;
+    height: 100%;
+    background: #222;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.5);
+}
+
+.building:before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 1);
+    animation: flickerBuilding 1s infinite alternate;
+}
+
+@keyframes flickerBuilding {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+
+/* .tree {
+    position: absolute;
+    bottom: 20px;
+    width: 30px;
+    height: 60px;
+    background-color: #228B22;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+} */
+
+.tree:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 10px;
+    height: 30px;
+    background-color: #8B4513;
+    border-radius: 5px;
+}
+
+.road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: #333;
+}
+
+.road-line, .road-line2 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    transform: translateY(-50%);
+    animation: moveRoadLine 1s linear infinite;
+}
+
+.road-line2 {
+    top: 60%;
+    animation: moveRoadLine2 1s linear infinite;
+}
+
+.lamp {
+    position: absolute;
+    bottom: 50px;
+    width: 10px;
+    height: 30px;
+    background: #333;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 1);
+    animation: blinkLamp 1.5s infinite alternate;
+}
+
+.lamp:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    background: #ffcc00;
+    border-radius: 50%;
+}
+
+.car {
+    position: absolute;
+    bottom: 40px;
+    left: 10%;
+    width: 220px;
+    height: 80px;
+    animation: moveCar 10s linear infinite;
+}
+
+.car-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #FF4500;
+    border-radius: 15px;
+    border: 5px solid #333;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, #FF00FF, #00FFFF);
+}
+
+.car-front {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+    width: 40px;
+    height: 40px;
+    /* background: #FF4500; */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.window {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    width: 50px;
+    height: 30px;
+    background: #B0E0E6;
+    border-radius: 5px;
+}
+
+.window-2 {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    width: 50px;
+    height: 30px;
+    background: #B0E0E6;
+    border-radius: 5px;
+}
+
+.wheel {
+    position: absolute;
+    bottom: -36px;
+    width: 40px;
+    height: 40px;
+    background: #111;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+    animation: spinWheels 1s linear infinite;
+}
+
+.left {
+    left: 40px;
+    border: 5px solid #fff;
+}
+
+.right {
+    right: 40px;
+    border: 5px solid #fff;
+}
+
+.headlights {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 10px;
+    background: #FFFF00;
+    border-radius: 10px;
+    opacity: 0.7;
+    animation: blinkHeadlights 1.5s infinite alternate;
+}
+
+/* Анимации */
+@keyframes moveCar {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(60vw);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
